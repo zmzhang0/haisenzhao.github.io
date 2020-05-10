@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>DSCarver</title>
+<link rel="stylesheet" type="text/css" href="./files/style.css" media="screen">
+<link rel="stylesheet" type="text/css" href="./files/orbit-1.2.3.css" media="screen">
+<link rel="stylesheet" type="text/css" href="./files/jquery.fancybox-1.3.4.css" media="screen">
+<!--[if lt IE 9]><script type="text/javascript" src="assets/scripts/modernizr.js"></script><![endif]-->
+<style type="text/css">#lb_infobar_3436182992{color:#000000 !important;font-weight:normal !important;text-decoration:none !important;margin-top:0 !important;margin-bottom:0 !important;margin-left:0 !important;margin-right:0 !important;padding-top:0 !important;padding-bottom:0 !important;padding-left:0 !important;padding-right:0 !important;float:none !important;text-align:left !important;height:37px !important;width:100% !important;background-color:#F5F5F5 !important;background-image:-webkit-linear-gradient(top,#F5F5F5,#EEEDED) !important;border-bottom:1px solid #C0C0C0 !important;box-shadow:inset 0 1px 1px 1px #FFFFFF !important;line-height:36px !important;font-family:'微软雅黑','宋体' !important;z-index:9999999999 !important;margin:0 !important;padding:0 !important;position:fixed !important;top:0px !important;left:0px !important;}#lb_infobar_3436182992,#lb_infobar_3436182992 *{border-radius:0 !important;padding:0 !important;margin:0 !important;}#lb_infobar_3436182992 *{width:auto !important;background:none !important;}#lb_infobar_3436182992 input{border-radius:4px !important;box-shadow:0 1px 2px rgba(0,0,0,.15) !important;font-family:'微软雅黑,','宋体' !important;font-size:12px !important;font-weight:normal !important;text-shadow:none !important;margin:0 0 0 18px !important;padding:0 !important;}#lb_infobar_translate_3436182992{background-color:#FBB016 !important;background-image:-webkit-linear-gradient(top,#FBB016,#ED8A0D) !important;width:78px !important;height:26px !important;border:1px solid #E19D3C !important;color:#FFFFFF !important;cursor:pointer !important;line-height:normal !important;vertical-align:middle !important;}#lb_infobar_translate_3436182992:hover{background-color:#FDBF3F !important;background-image:-webkit-linear-gradient(top,#FDBF3F,#ED8A0D) !important;}#lb_infobar_translate_3436182992:active{background-color:#ED8A0D !important;background-image:-webkit-linear-gradient(top,#ED8A0D,#FBB016) !important;}#lb_infobar_words_3436182992{background-color:#FBB016 !important;background-image:-webkit-linear-gradient(top,#FBB016,#ED8A0D) !important;width:90px !important;height:26px !important;border:1px solid #E19D3C !important;color:#FFFFFF !important;cursor:pointer !important;line-height:normal !important;vertical-align:middle !important;left:360px !important;}#lb_infobar_words_3436182992:hover{background-color:#FDBF3F !important;background-image:-webkit-linear-gradient(top,#FDBF3F,#ED8A0D) !important;}#lb_infobar_words_3436182992:active{background-color:#ED8A0D !important;background-image:-webkit-linear-gradient(top,#ED8A0D,#FBB016) !important;}#lb_infobar_return_3436182992{background-color:#FFFFFF !important;background-image:-webkit-linear-gradient(top,#FFFFFF,#E0DFDF) !important;width:78px !important;height:26px !important;border:1px solid #B0AFAF !important;color:rgba(0,0,0,.5) !important;cursor:pointer !important;line-height:normal !important;vertical-align:middle !important;}#lb_infobar_return_3436182992.lb_infobar_return_words_3436182992{width:130px !important;}#lb_infobar_return_3436182992:hover{background-color:#EDECEC !important;background-image:-webkit-linear-gradient(top,#FFFFFF,#EDECEC) !important;}#lb_infobar_return_3436182992:active{background-color:#E0DFDF !important;background-image:-webkit-linear-gradient(top,#E0DFDF,#FFFFFF) !important;}#lb_infobar_3436182992 a{text-decoration:underline !important;font-size:12px !important;color:#999999 !important;cursor:pointer !important;}#lb_infobar_3436182992 a:hover{color:#FC9500 !important;}#lb_infobar_3436182992 a:active{color:#D68003 !important;}#lb_infobar_close_3436182992{background-position:-66px -27px !important;cursor:pointer !important;position:absolute !important;top:0 !important;right:1em !important;line-height:36px !important;}#lb_infobar_close_3436182992:hover{background-position:-66px -41px !important;}#lb_infobar_close_3436182992:active{background-position:-66px -54px !important;}#lb_infobar_notice_3436182992{line-height:36px !important;margin-left:55px !important;font-size:14px !important;vertical-align:middle !important;}#lb_infobar_powered_3436182992{padding-left:18px !important;font-size:10px !important;color:#979797 !important;font-family:'Arial' !important;font-style:italic !important;}#lb_infobar_ignore_3436182992{line-height:36px !important;margin-right:3em !important;position:absolute !important;top:0 !important;right:0 !important;}#lb_infobar_manual_3436182992{line-height:36px !important;margin-right:12em !important;position:absolute !important;top:0 !important;right:0 !important;}#lb_infobar_icon_3436182992{position:absolute !important;top:0 !important;left:0 !important;height:37px !important;width:42px !important;color:#fff !important;font-size:24px !important;text-align:center !important;background-repeat:no-repeat !important;background-position:-80px 0 !important;}#lb_infobar_translate_3436182992.lb_infobar_btn_inactive_3436182992,#lb_infobar_words_3436182992.lb_infobar_btn_inactive_3436182992{background-color:#FFFFFF !important;background-image:-webkit-linear-gradient(top,#FFFFFF,#E0DFDF) !important;border:1px solid #B0AFAF !important;color:#808080 !important;}#lb_infobar_translate_3436182992.lb_infobar_btn_inactive_3436182992:hover,#lb_infobar_words_3436182992.lb_infobar_btn_inactive_3436182992:hover{background-color:#EDECEC !important;background-image:-webkit-linear-gradient(top,#FFFFFF,#EDECEC) !important;}#lb_infobar_translate_3436182992.lb_infobar_btn_inactive_3436182992:hover,#lb_infobar_words_3436182992.lb_infobar_btn_inactive_3436182992:active{background-color:#E0DFDF !important;background-image:-webkit-linear-gradient(top,#E0DFDF,#FFFFFF) !important;}#lb_infobar_hover_3436182992:before{content:" " !important;position:absolute !important;border:5px solid transparent !important;border-top:5px solid #000 !important;bottom: -10px !important;left: 50% !important;}#lb_infobar_hover_3436182992:after{content:" " !important;position:absolute !important;border:5px solid transparent !important;border-top:5px solid #fff !important;bottom: -9px !important;left: 50% !important;}#lb_infobar_hover_3436182992{line-height:1.2 !important;font-size:12px !important;min-width:150px !important;position:fixed !important;background:#fff !important;border:1px solid #333 !important;border-radius:3px !important;padding:10px !important;color:#333 !important;z-index:9999999999 !important;}#lb_infobar_hover_3436182992.lb_infobar_hover_below:before{content:" " !important;position:absolute !important;border:5px solid transparent !important;border-bottom:5px solid #000 !important;top:-10px !important;left:50% !important;bottom:auto !important;}#lb_infobar_hover_3436182992.lb_infobar_hover_below:after{content:" " !important;position:absolute !important;border:5px solid transparent !important;border-bottom:5px solid #fff !important;top: -9px !important;left: 50% !important;bottom:auto !important;}</style></head>
+<body style="margin-top: 38px !important; position: relative !important;">
+
+<div class="wrapper">
+  <header>
+    <h1>DSCarver: Decompose-and-Spiral-Carve <br>for Subtractive Manufacturing</h1>
+	<p class="session">ACM SIGGRAPH 2018</p>
+	<p class="author">
+        <a href="http://irc.cs.sdu.edu.cn/~zhaohaisen/" target="_blank">Haisen Zhao</a><sup>1</sup>&nbsp;&nbsp;&nbsp;
+        <a href="http://www.cs.sfu.ca/~haoz/" target="_blank">Hao Zhang</a><sup>2</sup>&nbsp;&nbsp;&nbsp;
+        <a href="https://sites.google.com/site/xinshiqing/" target="_blank">Shiqing Xin</a><sup>1</sup> &nbsp;&nbsp;&nbsp;
+        <a href="" target="_blank">Yuanmin Deng</a><sup>1</sup>&nbsp;&nbsp;&nbsp;
+        <a href="http://www.cs.sdu.edu.cn/zh/~chtu" target="_blank">Changhe Tu</a><sup>1</sup>&nbsp;&nbsp;&nbsp;<br>
+        <a href="http://i.cs.hku.hk/~wenping/" target="_blank">Wenping Wang</a><sup>3</sup>&nbsp;&nbsp;&nbsp;
+        <a href="http://www.cs.tau.ac.il/~dcor/" target="_blank">Daniel Cohen-Or</a><sup>4</sup>&nbsp;&nbsp;&nbsp;
+		<a href="http://www.cs.sdu.edu.cn/~baoquan/" target="_blank">Baoquan Chen</a><sup>1,5</sup>
+</p>
+	  <br>
+
+	  <p class="school">
+		<sup>1</sup><a href="http://en.sdu.edu.cn/" target="_blank">Shandong University</a>&nbsp;&nbsp;
+        <sup>2</sup><a href="http://www.sfu.ca/" target="_blank">Simon Fraser Universtiy</a>&nbsp;&nbsp;
+		<sup>3</sup><a href="http://www.hku.hk/" target="_blank">The University of Hong Kong</a>&nbsp;&nbsp;
+        <sup>4</sup><a href="http://www.tau.ac.il/" target="_blank">Tel-Aviv University</a>&nbsp;&nbsp;
+        <sup>5</sup><a href="http://english.pku.edu.cn/" target="_blank">Peking University</a>&nbsp;&nbsp;
+     
+</p>
+	  <br>
+  </header>
+
+  <section id="home">
+    <div class="row" style="text-align:center;">
+		<img src="./files/rep_image.jpg" height="300" alt="">
+    </div>
+<div>	
+	<p>
+		A freeform 3D object, the kitten, automatically decomposed into five machinable patches, each carved using a CNC machine following a continuous
+iso-scallop Fermat spiral path. The fully machined object is shown on the left. We deliberately lowered the path resolution to ease path visualization.
+</p>
+</div>
+ <p><span><o:p>&nbsp;</o:p></span></p>
+  </section>
+  
+  <section id="abstract">
+    <h3 class="title">Abstract</h3> <br>
+    <div class="row">
+        <p><span class="dropcap">W</span>present an automatic algorithm for subtractive manufacturing of freeform 3D objects using high-speed machining (HSM) via CNC. A CNC machine
+operates a cylindrical cutter to carve off material from a 3D shape stock, following a tool path, to “expose” the target object. Our method decomposes the input object’s surface into a small number of patches each of which is fully accessible and machinable by the CNC machine, in continuous fashion, under a fixed cutter-object setup configuration. This is achieved by covering the input surface with a minimum number of accessible regions and then extracting a set of machinable patches from each accessible region. For each patch obtained, we compute a continuous, space-filling, and iso-scallop tool path which conforms to the patch boundary, enabling efficient carving
+with high-quality surface finishing. The tool path is generated in the form of connected Fermat spirals, which have been generalized from a 2D fill pattern for layered manufacturing to work for curved surfaces. Furthermore, we develop a novel method to control the spacing of Fermat spirals based on directional surface curvature and adapt the heat method to obtain isoscallop carving. We demonstrate automatic generation of accessible and machinable surface decompositions and iso-scallop Fermat spiral carving
+paths for freeform 3D objects. Comparisons are made to tool paths generated by commercial software in terms of real machining time and surface quality.
+
+  </p>
+        <br>
+      </div>
+    <div class="row">
+   
+  
+  </div></section>
+
+  <section id="vid">
+    <h3 class="title">Video</h3><br>
+	<div style="text-align:center;">
+		<div style="text-align:center;"></div>
+		<video width="750" controls="controls">
+			<source src="./files/DSCarver.mov">
+			Your browser does not support HTML5 video.You could download the video in download part.
+		</video>
+	</div>
+  <p><span><o:p>&nbsp;</o:p></span></p>
+  
+  
+  </section>
+  
+    <section id="vid">
+    <h3 class="title">More results</h3><br>
+	
+    <div style="text-align:center;">
+	<img src="./files/fixtures.png" height="380" alt="">
+<p>Photographs capturing a couple of fixture configurations applied
+to stabilize the 3D objects during CNC machining.
+    </p>
+
+	</div>
+    
+    
+    
+    <div style="text-align:center;">
+	<img src="./files/gallery_decomp.png" height="280" alt="">
+	</div>
+	<p>A gallery of surface decomposition results for 3+2-axis machining.
+For each model in each row, the first two images show the accessible regions
+obtained after overlap resolution in two different views; the next two images
+show the final machinable patches obtained in two views.
+    </p>
+    
+	<div style="text-align:center;">
+	<img src="./files/gallery_toolpath.png" height="480" alt="">
+	</div>
+	<p>Continuous iso-callop Fermat spirals generated by our method,
+over patches with diverse geometric characteristics. To ease visualization,
+we show carving paths obtained at a low resolution.
+    </p>
+    
+    <div style="text-align:center;">
+	<img src="./files/real_machining.png" height="330" alt="">
+	</div>
+	<p>Photographs and close-ups of real machining results for full 3D objects, following our fully automatic method for surface decomposition and tool path
+planning. The results were obtained using a CNC 6040 2200W 5-axis machine, with machinable resin board as the testing material.
+    </p>    
+
+  <p><span><o:p>&nbsp;</o:p></span></p>
+  </section>
+  
+
+  <section id="downloads">
+    <h3 class="title">Downloads</h3>
+    <div class="row">	
+	<p><span><o:p>&nbsp;</o:p></span></p>	
+		<table align="center" border="0" class="list">
+			<tbody><tr>
+			    <td width="100" align="center"><a href="./files/DSCarver.pdf"> <img width="80" id="_x0000_i10320" src="./files/paperpic.png" alt="1"></a></td>				
+				<td width="100" align="center"><a href=""> <img width="80" id="_x0000_i10321" src="./files/slidespic.png" alt="1"></a></td>	
+                <td width="100" align="center"><a href=""> <img width="80" id="_x0000_i10320" src="./files/videopic.png" alt="1"></a></td>	                
+			</tr>
+			
+			<tr>
+			    <td width="100" align="center"><a href="./files/DSCarver.pdf"> Paper(31.9M) </a></td>
+				<td width="100" align="center"><a href="./files/DSCarver.pdf"> Slide(166M)</a></td>
+                <td width="100" align="center"><a href="./files/DSCarver.mov"> Video(67.4M)</a></td>
+
+			</tr>
+		</tbody></table>
+    </div>   
+	
+	<div class="row">	
+	
+    </div> 
+  <p><span><o:p>&nbsp;</o:p></span></p>
+  </section>
+
+ <section id="acknowledgement">
+    <h3 class="title">Acknowledgement<br>
+      <span>
+      <o:p></o:p>
+    </span></h3>
+	<div class="row" >
+      <p><span class="dropcap" >W</span>e first thank all the reviewers for their valuable comments and
+suggestions. We are also grateful to Jibin Zhao, Libin Sun, Haoyuan
+Yu, among others, for sharing their expertise and advise on CNC machining.
+Wewould like to acknowledge Jinjie Lin for his contribution
+to the algorithm development in the very early stage of the project.
+Thanks for the bunny model from the Stanford Computer Graphics
+Laboratory and other models provided by the AIM@SHAPE Shape
+Repository.<br> &nbsp;&nbsp;This work is supported in part by grants from National
+973 Program (2015CB352501), NSFC (61232011, 61202147, 61332015,
+61572291, 61772016), NSERC Canada (No. 611370), the Joint NSFCISF
+Research Program 61561146397 funded by the National Natural
+Science Foundation of China and the Israel Science Foundation,
+Israeli Science Foundation (No. 1790/12), U.S.-Israel Bi-National
+Science Foundation (No. 2012376), the Israel Science Foundation
+(2366/16), the ISF-NSFC Joint Research Program (2217/15, 2472/17),
+and gift funds from Adobe and Intel.</p>
+  <p><span><o:p>&nbsp;</o:p></span></p>
+</div></section>
+
+  <section id="bibtex">
+    <h3 class="title">BibTex</h3><br>
+    
+   <div class="row"><p>
+@article {zhao_sig18,<br>
+  author = {Haisen Zhao and Hao Zhang and Shiqing Xin and Yuanmin Deng and Changhe Tu<br> and Wenping Wang and Daniel Cohen-Or and Baoquan Chen},<br>
+  title = {DSCarver: Decompose-and-Spiral-Carve for Subtractive Manufacturing},<br>
+  journal = {ACM Transactions on Graphics (Special Issue of SIGGRAPH)},<br>
+  volume = {37},<br>
+  number = {4},<br>
+  pages = {Article No. 137},<br>
+  year = {2018}<br>
+} </p>
+  <p><span><o:p>&nbsp;</o:p></span></p>
+  </div> 
+  
+  </section>
+
+  <footer></footer>
+</div>
+</body></html>
