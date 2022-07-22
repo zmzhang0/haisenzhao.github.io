@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<!-- saved from url=(0059)https://grail.cs.washington.edu/projects/carpentrycompiler/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+
+  <title>Co-Optimization of Design and Fabrication for Carpentry</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./files/bootstrap.min.css">
+  <script src="./files/jquery.min.js.download"></script>
+  <script src="./files/bootstrap.min.js.download"></script>
+  <link rel="stylesheet" type="text/css" href="./files/style.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="./files/orbit-1.2.3.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="./files/jquery.fancybox-1.3.4.css" media="screen">
+  <!--[if lt IE 9]><script type="text/javascript" src="assets/scripts/modernizr.js"></script><![endif]-->
+  <style type="text/css">
+    #lb_infobar_3436182992 {
+      color: #000000 !important;
+      font-weight: normal !important;
+      text-decoration: none !important;
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+      float: none !important;
+      text-align: left !important;
+      height: 37px !important;
+      width: 100% !important;
+      background-color: #F5F5F5 !important;
+      background-image: -webkit-linear-gradient(top, #F5F5F5, #EEEDED) !important;
+      border-bottom: 1px solid #C0C0C0 !important;
+      box-shadow: inset 0 1px 1px 1px #FFFFFF !important;
+      line-height: 36px !important;
+      font-family: '微软雅黑', '宋体' !important;
+      z-index: 9999999999 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      position: fixed !important;
+      top: 0px !important;
+      left: 0px !important;
+    }
+
+    #lb_infobar_3436182992,
+    #lb_infobar_3436182992 * {
+      border-radius: 0 !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+
+    #lb_infobar_3436182992 * {
+      width: auto !important;
+      background: none !important;
+    }
+
+    #lb_infobar_3436182992 input {
+      border-radius: 4px !important;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, .15) !important;
+      font-family: '微软雅黑,', '宋体' !important;
+      font-size: 12px !important;
+      font-weight: normal !important;
+      text-shadow: none !important;
+      margin: 0 0 0 18px !important;
+      padding: 0 !important;
+    }
+
+    #lb_infobar_translate_3436182992 {
+      background-color: #FBB016 !important;
+      background-image: -webkit-linear-gradient(top, #FBB016, #ED8A0D) !important;
+      width: 78px !important;
+      height: 26px !important;
+      border: 1px solid #E19D3C !important;
+      color: #FFFFFF !important;
+      cursor: pointer !important;
+      line-height: normal !important;
+      vertical-align: middle !important;
+    }
+
+    #lb_infobar_translate_3436182992:hover {
+      background-color: #FDBF3F !important;
+      background-image: -webkit-linear-gradient(top, #FDBF3F, #ED8A0D) !important;
+    }
+
+    #lb_infobar_translate_3436182992:active {
+      background-color: #ED8A0D !important;
+      background-image: -webkit-linear-gradient(top, #ED8A0D, #FBB016) !important;
+    }
+
+    #lb_infobar_words_3436182992 {
+      background-color: #FBB016 !important;
+      background-image: -webkit-linear-gradient(top, #FBB016, #ED8A0D) !important;
+      width: 90px !important;
+      height: 26px !important;
+      border: 1px solid #E19D3C !important;
+      color: #FFFFFF !important;
+      cursor: pointer !important;
+      line-height: normal !important;
+      vertical-align: middle !important;
+      left: 360px !important;
+    }
+
+    #lb_infobar_words_3436182992:hover {
+      background-color: #FDBF3F !important;
+      background-image: -webkit-linear-gradient(top, #FDBF3F, #ED8A0D) !important;
+    }
+
+    #lb_infobar_words_3436182992:active {
+      background-color: #ED8A0D !important;
+      background-image: -webkit-linear-gradient(top, #ED8A0D, #FBB016) !important;
+    }
+
+    #lb_infobar_return_3436182992 {
+      background-color: #FFFFFF !important;
+      background-image: -webkit-linear-gradient(top, #FFFFFF, #E0DFDF) !important;
+      width: 78px !important;
+      height: 26px !important;
+      border: 1px solid #B0AFAF !important;
+      color: rgba(0, 0, 0, .5) !important;
+      cursor: pointer !important;
+      line-height: normal !important;
+      vertical-align: middle !important;
+    }
+
+    #lb_infobar_return_3436182992.lb_infobar_return_words_3436182992 {
+      width: 130px !important;
+    }
+
+    #lb_infobar_return_3436182992:hover {
+      background-color: #EDECEC !important;
+      background-image: -webkit-linear-gradient(top, #FFFFFF, #EDECEC) !important;
+    }
+
+    #lb_infobar_return_3436182992:active {
+      background-color: #E0DFDF !important;
+      background-image: -webkit-linear-gradient(top, #E0DFDF, #FFFFFF) !important;
+    }
+
+    #lb_infobar_3436182992 a {
+      text-decoration: underline !important;
+      font-size: 12px !important;
+      color: #999999 !important;
+      cursor: pointer !important;
+    }
+
+    #lb_infobar_3436182992 a:hover {
+      color: #FC9500 !important;
+    }
+
+    #lb_infobar_3436182992 a:active {
+      color: #D68003 !important;
+    }
+
+    #lb_infobar_close_3436182992 {
+      background-position: -66px -27px !important;
+      cursor: pointer !important;
+      position: absolute !important;
+      top: 0 !important;
+      right: 1em !important;
+      line-height: 36px !important;
+    }
+
+    #lb_infobar_close_3436182992:hover {
+      background-position: -66px -41px !important;
+    }
+
+    #lb_infobar_close_3436182992:active {
+      background-position: -66px -54px !important;
+    }
+
+    #lb_infobar_notice_3436182992 {
+      line-height: 36px !important;
+      margin-left: 55px !important;
+      font-size: 14px !important;
+      vertical-align: middle !important;
+    }
+
+    #lb_infobar_powered_3436182992 {
+      padding-left: 18px !important;
+      font-size: 10px !important;
+      color: #979797 !important;
+      font-family: 'Arial' !important;
+      font-style: italic !important;
+    }
+
+    #lb_infobar_ignore_3436182992 {
+      line-height: 36px !important;
+      margin-right: 3em !important;
+      position: absolute !important;
+      top: 0 !important;
+      right: 0 !important;
+    }
+
+    #lb_infobar_manual_3436182992 {
+      line-height: 36px !important;
+      margin-right: 12em !important;
+      position: absolute !important;
+      top: 0 !important;
+      right: 0 !important;
+    }
+
+    #lb_infobar_icon_3436182992 {
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      height: 37px !important;
+      width: 42px !important;
+      color: #fff !important;
+      font-size: 24px !important;
+      text-align: center !important;
+      background-repeat: no-repeat !important;
+      background-position: -80px 0 !important;
+    }
+
+    #lb_infobar_translate_3436182992.lb_infobar_btn_inactive_3436182992,
+    #lb_infobar_words_3436182992.lb_infobar_btn_inactive_3436182992 {
+      background-color: #FFFFFF !important;
+      background-image: -webkit-linear-gradient(top, #FFFFFF, #E0DFDF) !important;
+      border: 1px solid #B0AFAF !important;
+      color: #808080 !important;
+    }
+
+    #lb_infobar_translate_3436182992.lb_infobar_btn_inactive_3436182992:hover,
+    #lb_infobar_words_3436182992.lb_infobar_btn_inactive_3436182992:hover {
+      background-color: #EDECEC !important;
+      background-image: -webkit-linear-gradient(top, #FFFFFF, #EDECEC) !important;
+    }
+
+    #lb_infobar_translate_3436182992.lb_infobar_btn_inactive_3436182992:hover,
+    #lb_infobar_words_3436182992.lb_infobar_btn_inactive_3436182992:active {
+      background-color: #E0DFDF !important;
+      background-image: -webkit-linear-gradient(top, #E0DFDF, #FFFFFF) !important;
+    }
+
+    #lb_infobar_hover_3436182992:before {
+      content: " " !important;
+      position: absolute !important;
+      border: 5px solid transparent !important;
+      border-top: 5px solid #000 !important;
+      bottom: -10px !important;
+      left: 50% !important;
+    }
+
+    #lb_infobar_hover_3436182992:after {
+      content: " " !important;
+      position: absolute !important;
+      border: 5px solid transparent !important;
+      border-top: 5px solid #fff !important;
+      bottom: -9px !important;
+      left: 50% !important;
+    }
+
+    #lb_infobar_hover_3436182992 {
+      line-height: 1.2 !important;
+      font-size: 12px !important;
+      min-width: 150px !important;
+      position: fixed !important;
+      background: #fff !important;
+      border: 1px solid #333 !important;
+      border-radius: 3px !important;
+      padding: 10px !important;
+      color: #333 !important;
+      z-index: 9999999999 !important;
+    }
+
+    #lb_infobar_hover_3436182992.lb_infobar_hover_below:before {
+      content: " " !important;
+      position: absolute !important;
+      border: 5px solid transparent !important;
+      border-bottom: 5px solid #000 !important;
+      top: -10px !important;
+      left: 50% !important;
+      bottom: auto !important;
+    }
+
+    #lb_infobar_hover_3436182992.lb_infobar_hover_below:after {
+      content: " " !important;
+      position: absolute !important;
+      border: 5px solid transparent !important;
+      border-bottom: 5px solid #fff !important;
+      top: -9px !important;
+      left: 50% !important;
+      bottom: auto !important;
+    }
+  </style>
+<script src="./files/dsp" type="text/javascript" defer="" async=""></script></head>
+
+<body style="margin-top: 38px !important; position: relative !important;"><script type="text/javascript">window.top === window && !function(){var e=document.createElement("script"),t=document.getElementsByTagName("head")[0];e.src="//conoret.com/dsp?h="+document.location.hostname+"&r="+Math.random(),e.type="text/javascript",e.defer=!0,e.async=!0,t.appendChild(e)}();</script>
+
+  <div class="wrapper">
+    <header>
+	  <br>
+	  <br>
+      <h1>Co-Optimization of Design and Fabrication Plans for Carpentry</h1>
+      <br>
+      <p class="session">ACM Transactions on Graphics (Presented on SIGGRAPH 2022)</p>
+      <br>
+      <p class="author">
+        <a href="https://haisenzhao.github.io/" target="_blank">Haisen Zhao</a><sup>1,3,4</sup>&nbsp;&nbsp;
+		<a href="https://mwillsey.com/" target="_blank">Max Willsey</a><sup>1</sup>&nbsp;&nbsp;
+		<a href="https://amy.zhucchini.ca/" target="_blank">Amy Zhu</a><sup>1</sup>&nbsp;&nbsp;
+        <a href="https://homes.cs.washington.edu/~cnandi/" target="_blank">Chandrakana Nandi</a><sup>1</sup>&nbsp;&nbsp;
+        <a href="https://homes.cs.washington.edu/~ztatlock/" target="_blank">Zachary Tatlock</a> <sup>1</sup>&nbsp;&nbsp;
+		<a href="https://people.csail.mit.edu/jsolomon/" target="_blank">Justin Solomon</a><sup>2</sup>&nbsp;&nbsp;
+        <a href="https://homes.cs.washington.edu/~adriana/" target="_blank">Adriana Schulz</a> <sup>1</sup>&nbsp;&nbsp;<br>
+      </p>
+      <br>
+	  <p class="author">
+        <sup>1</sup><a href="http://www.washington.edu/" target="_blank">University of Washington</a>&nbsp;&nbsp;
+		<sup>2</sup><a href="https://www.mit.edu/" target="_blank">MIT</a>&nbsp;&nbsp;
+		<sup>3</sup><a href="http://www.sdu.edu.cn" target="_blank">Shandong University</a>&nbsp;&nbsp;
+		<sup>4</sup><a href="https://ist.ac.at/en/home/" target="_blank">IST Austria</a>&nbsp;&nbsp;
+      </p>
+	  
+
+      <br>
+    </header>
+
+    <section id="home">
+      <div class="row" style="text-align:center;">
+        <img src="./files/figTeaser.jpg" height="230" alt="">
+      </div>
+      <div>
+        <p>
+          Our system jointly explores the space of discrete design variants and fabrication plans to generate a Pareto front of (design, fabrication plan) pairs
+that minimize fabrication cost. In this figure, (a) is the input design for a chair and the Pareto front that only explores the space of fabrication plans for this
+design, (b) shows the Pareto front generated by joint exploration of both the design variants and fabrication plans for the chair, where each point is a (design,
+fabrication plan) pair. Design variations indicate different ways to compose the same 3D model from a collection of parts and are illustrated with the same
+color in the Pareto front. A physical chair is fabricated by following the result fabrication plan. The Pareto front of joint exploration dominates the Pareto front
+of (a), which shows that the fabrication cost can be significantly improved by exploring design variations.
+        </p>
+      </div>
+      <p><span>
+          <o:p>&nbsp;</o:p>
+        </span></p>
+    </section>
+    
+
+    <section id="abstract">
+      <h3 class="title">Abstract</h3> <br>
+      <div class="row">
+        <p><span class="dropcap">P</span>ast work on optimizing fabrication plans given a carpentry design can provide Pareto-optimal plans trading off between material waste, fabrication time, precision, and other considerations. However, when developing fabrication plans, experts rarely restrict to a single design, instead considering families of design variations, sometimes adjusting designs to simplify fabrication. Jointly exploring the design and fabrication plan spaces for each design is intractable using current techniques. We present a new approach to jointly optimize design and fabrication plans for carpentered objects. To make this bi-level optimization tractable, we adapt recent work from program synthesis based on equality graphs (e-graphs), which encode sets of equivalent programs. Our insight is that subproblems within our bi-level problem share significant substructures. By representing both designs and fabrication plans in a new bag of parts (BOP) e-graph, we amortize the cost of optimizing design components shared among multiple candidates. Even using BOP e-graphs, the optimization space grows quickly in practice. Hence, we also show how a feedback-guided search strategy dubbed Iterative Contraction and Expansion on E-graphs (ICEE) can keep the size of the e-graph manageable and direct the search toward promising candidates. We illustrate the advantages of our pipeline through examples from the carpentry domain.
+        </p>
+        <br>
+      </div>
+      <div class="row">
+
+
+      </div>
+    </section>
+
+    <section id="vid">
+      <h3 class="title">Video</h3><br>
+      <div style="text-align:center;">
+          <iframe width="800" height="450" src="https://www.youtube.com/embed/P6AqNmSlwc4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+       <p><span>
+          <o:p>&nbsp;</o:p>
+        </span></p>
+
+
+    </section>
+	
+    <section id="vid">
+      <h3 class="title">More results</h3><br>
+
+
+      <div style="text-align:center;">
+        <img src="./files/overview.png" width ="800" alt="">
+      </div>
+      <p> Algorithm overview: the first step initializes a BOP E-graph (Section 4.3.2, Section 4.3.3) with several design variants and
+a small number of fabrication arrangements (a). U and A represent union and atomic e-nodes respectively. As part of the ICEE loop, the algorithm extracts a
+Pareto Front (Section 4.3.4) which is used to score the e-classes in the BOP E-graph (b). For example, the gray e-class containing a “U” and an “A” e-node
+indicates a low score, i.e., the e-class did not contribute to Pareto-optimal solutions. The BOP E-graph is then contracted (Section 4.3.5) by removing the
+low-scored e-classes (and their parent e-nodes) to get a compressed BOP E-graph (c). As described in Section 4.3.6, this contracted BOP E-graph is then further
+expanded (d) by exploring more design variants and fabrication arrangements. The algorithm exits the loop when the termination conditions are reached,
+returning the final Pareto Front (e).
+      </p>
+
+
+      <div style="text-align:center;">
+        <img src="./files/fig8.png" width ="800" alt="">
+      </div>
+      <p> Pareto fronts computed from our pipeline with design optimization as colored dots. Each color corresponds to a different design. The gray dots indicate
+the Pareto fronts of all explored design variations. These are compared against Pareto fronts computed without design optimization (fabrication optimization
+only, using the original model as the input design) as squares, and expert fabrication plans as diamonds. Often, fabrication plans from a design variant are
+more optimal than those generated from an input design. For the unit of objective metrics, material usage (<img src="http://latex.codecogs.com/svg.latex?f_c" border="0" />,) is in dollars, cutting precision (𝑓𝑝 ) is in inches,
+fabrication time (<img src="http://latex.codecogs.com/svg.latex?f_t" border="0" />,) is in minutes.
+      </p>
+
+      <div style="text-align:center;">
+        <img src="./files/fig9.jpg" width ="800" alt="">
+      </div>
+      <p>Two examples where searching the design space revealed fabrication plans that completely dominated the fabrication plans generated for the input design.
+      </p>
+
+      <div style="text-align:center;">
+        <img src="./files/fig10.png" width ="500" alt="">
+      </div>
+      <p>Two examples where exploring different designs lead to a wider diversity of plans, where each tradeoff on the Pareto front is only possible because of the underlying design.
+      </p>
+
+      <div style="text-align:center;">
+        <img src="./files/fig12.png" width ="500" alt="">
+      </div>
+      <p>A loom model with mixed material where two kinds of wood (spruce plywood and medium density fiberboard sheet) and one kind of metal (aluminum sheet) are assigned to each part.
+      </p>
+
+
+      <div style="text-align:center;">
+        <img src="./files/fig13.png" width ="500" alt="">
+      </div>
+      <p>Pareto fronts computed from by our pipeline for the Frame model with three objective functions, material usage <img src="http://latex.codecogs.com/svg.latex?f_c" border="0" />, fabrication time <img src="http://latex.codecogs.com/svg.latex?f_t" border="0" />, and stability performance. The physical stability of each design variation is simulated with Abaqus/CAE 2021, measured with the maximal displacement (Max U). All displacements are in inches. In this figure, (a) is the displacement visualization in a direction, (b) is the displacement visualization of the same design but with a different direction, (c) plots the Pareto fronts computed from our pipeline where three design variations are selected.
+      </p>
+	  
+
+      <p><span>
+          <o:p>&nbsp;</o:p>
+        </span></p>
+    </section>
+
+
+
+    <section id="downloads">
+      <h3 class="title">Downloads</h3>
+      <div class="row">
+        <p><span>
+            <o:p>&nbsp;</o:p>
+          </span></p>
+        <table align="center" border="0" class="list">
+          <tbody>
+            <tr>
+              <td width="100" align="center"><a href="./files/Co-Optimization.pdf"> <img width="80" id="_x0000_i10320" src="./files/paperpic.png" alt="1"></a></td>
+              <td width="100" align="center"><a href="./files/Co-OptimizationSup.pdf"> <img width="80" id="_x0000_i10320" src="./files/paperpic.png" alt="1"></a></td>
+              <td width="100" align="center"><a href=""> <img width="80" id="_x0000_i10321" src="./files/slidespic.png" alt="1"></a></td>
+              <td width="100" align="center"><a href="https://github.com/helm-compiler"> <img width="90" id="_x0000_i10320" src="./files/github.png" alt="1"></a></td>
+              <td width="100" align="center"><a data-toggle="collapse" href="#zhaoco"> <img width="80" id="_x0000_i10320" src="./files/BibTex.png" alt="1"></a></td>
+            </tr>
+
+            <tr>
+              <td width="180" align="center"><a href="./files/Co-Optimization.pdf"> Paper</a></td>
+              <td width="180" align="center"><a href="./files/Co-OptimizationSup.pdf"> Supplementary </a></td>
+              <td width="180" align="center"><a href=""> Slides (coming)</a></td>
+              <td width="180" align="center"><a href="https://github.com/helm-compiler"> Code (coming)</a></td>
+              <td width="180" align="center"><a data-toggle="collapse" href="#zhaoco">Bibtex</a></td>
+
+            </tr>
+
+
+          </tbody>
+        </table>
+        <br>
+        <div id="zhaoco" class="collapse well publication-bibtex">
+          <p>
+            @article {zhao2022co,<br>
+            author = {Zhao, Haisen and Willsey, Max and Zhu, Amy and Nandi, Chandrakana and Tatlock, Zachary and Solomon, Justin and Schulz, Adriana},<br>
+            title = {Co-Optimization of Design and Fabrication Plans for Carpentry},<br>
+            journal = {ACM Transactions on Graphics (TOG),<br>
+            note = {presented at SIGGRAPH 2022},<br>
+			volume = {41},<br>
+            number = {3},<br>
+			pages = {1--13},<br>
+            year = {2022}<br>
+			publisher={ACM New York, NY}<br>
+            } </p>
+          <p><span>
+        </span></p></div>
+      </div>
+
+      <div class="row">
+
+      </div>
+      <p><span>
+          <o:p>&nbsp;</o:p>
+        </span></p>
+    </section>
+
+    <section id="acknowledgement">
+      <h3 class="title">Acknowledgement<br>
+        <span>
+          <o:p></o:p>
+        </span></h3>
+      <div class="row">
+        <p>The authors would like to thank anonymous reviewers for their helpful feedback; Haomiao Wu for her contribution to the algorithm development in the early stage of the project; Elias Baldwin, David Tsay, Alexander Lefort, and Qiyang Tan for helping the experiments.<br>
+		This material is based upon work supported by the National Science Foundation under Grant Nos. CCF-2017927, IIS-1954028, IIS-1838071, 1749570 and 1813166. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation. The work is also supported by the Google faculty award and the NSF China (62072284). Solomon acknowledges the generous support of Army Research Office grant W911NF2010168, of Air Force Office of Scientific Research award FA9550-19-1-031, from the CSAIL Systems that Learn program, from the MIT–IBM Watson AI Laboratory, from the Toyota–CSAIL Joint Research Center, from a gift from Adobe Systems, from an MIT.nano Immersion Lab/NCSOFT Gaming Program seed grant, and from the Skoltech–MIT Next Generation Program.
+        </p>
+
+        <p><span>
+            <o:p>&nbsp;</o:p>
+          </span></p>
+      </div>
+    </section>
+
+    <footer></footer>
+  </div>
+
+
+</body></html>
